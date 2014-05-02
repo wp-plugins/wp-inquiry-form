@@ -1,0 +1,89 @@
+
+.main_left{width:57%;
+float: left;
+padding: 0 25px 0 25px;}
+.form_field{width: 100%;}
+div#wrapper {
+
+    padding: 10px;
+    width: 1000px;
+    margin-left: 30px;
+}
+    div#wrapper h2 {
+    font-size: 30px;
+    text-align: center;
+}
+    div#wrapper h4 {
+    font-size: 20px;
+}
+
+div#wrapper form p {
+    margin: 30px 0;
+}
+    div#wrapper form input[type="text"] {
+    border: 1px solid #999999;
+    border-radius: 5px 5px 5px 5px;
+    display: block;
+    height: 30px;
+    padding: 5px;
+    width: 100%;
+}
+
+    div#wrapper form input[type="submit"]{
+        
+        
+    }
+    div#wrapper form textarea {
+    border: 1px solid #999999;
+    border-radius: 5px 5px 5px 5px;
+    display: block;
+    height: 200px;
+    width: 705px;
+}
+
+div#wrapper div#mclanka {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+}
+div#wrapper div#mclanka a:link ,div#wrapper div#mclanka a:visited {
+     color: red;
+     text-decoration: none;
+}
+div#wrapper div#mclanka a:link ,div#wrapper div#mclanka a:hover {
+    text-decoration: underline;
+}
+div#wrapper div#mclanka a:link ,div#wrapper div#mclanka a img {
+    padding: 10px;
+    vertical-align: middle;
+}
+#send{background-color: #1d78cb !important;
+-webkit-box-shadow: 0px 3px 0px 0px #0f3e68 !important;
+-moz-box-shadow: 0px 3px 0px 0px #0f3e68 !important;
+box-shadow: 0px 3px 0px 0px #0f3e68 !important;
+padding: 3px 13px 5px;
+border-radius: 3px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+height: 30px;
+cursor: pointer;
+color: #fff !important;
+text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6) !important;
+font-size: 15px;
+line-height: 45px !important;
+font-family: arial, sans-serif;
+font-weight: bold;
+letter-spacing: -1px;
+text-decoration: none;
+}
+#send:hover{
+   background-color: #1D78CB;
+    box-shadow: 0 3px 0 0 #0F3E68;	
+	}
+	.form_label{display: inline-block; }
+	.donation_viva{width: 50%; float: left;}
+	.postbox .resources {
+background: url(../images/logo.png) 50% 5px no-repeat;
+padding-top: 70px;
+text-align: center;
+}
