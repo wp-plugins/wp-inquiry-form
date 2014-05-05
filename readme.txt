@@ -48,18 +48,6 @@ Installation consists of following steps:
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Place the "WP Inquiry Form"  in your dashboard menu a area.
 
-== Frequently Asked Questions ==
-
- 	= Where is the settings page for WP Inquiry Form ? =
-	You can display the setting in dashboard menu area.
-
-	= Is it possible to set the different email address? =
-	Yes you can set different email in the admin area.
-
-	= Is it possible to change field lable ? =
-	Yes you can . Give the name of field in the admin area. 
-
-
 
 
 == Screenshots ==
