@@ -355,7 +355,7 @@ $form = <<<EOT
 
 </style>
 
-<div id="main_form"><h3>{$header}</h3>
+<div id="main_form">
 <div id="send-msg"></div>
 
 	{$req_message_success}
