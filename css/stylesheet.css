@@ -1,5 +1,5 @@
 
-.main_left{width:57%;
+.main_left{width:57% !important;
 float: left;
 padding: 0 25px 0 25px;}
 .form_field{width: 100%;}
@@ -22,7 +22,7 @@ div#wrapper form p {
 }
     div#wrapper form input[type="text"] {
     border: 1px solid #999999;
-    border-radius: 5px 5px 5px 5px;
+   
     display: block;
     height: 30px;
     padding: 5px;
@@ -35,10 +35,10 @@ div#wrapper form p {
     }
     div#wrapper form textarea {
     border: 1px solid #999999;
-    border-radius: 5px 5px 5px 5px;
+
     display: block;
     height: 200px;
-    width: 705px;
+    width: 70%;
 }
 
 div#wrapper div#mclanka {
@@ -87,3 +87,8 @@ background: url(../images/logo.png) 50% 5px no-repeat;
 padding-top: 70px;
 text-align: center;
 }
+.ads_bar {
+width: 30% !important;
+}
+.right{float: right;}
+#cap_genrate{margin-left: 11px;}

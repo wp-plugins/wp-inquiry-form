@@ -1,26 +1,26 @@
 <?php
-		/*
-		Plugin Name:WP Inquiry Form
-		Plugin URI: http://www.vivacityinfotech.com
-		Description: Simple WP Inquiry form for your blog posts or pages.
-		Author: vivacityinfotech		
-		Authero URI: http://vivacityinfotech.com
-		Version: 1.0
-		Requires at least: 3.8 or later
+/*
+Plugin Name:WP Inquiry Form
+Plugin URI: http://www.vivacityinfotech.com
+Description: Simple WP Inquiry form for your blog posts or pages.
+Author: vivacityinfotech		
+Authero URI: http://vivacityinfotech.com
+Version: 1.0
+Requires at least: 3.8 or later
 		
-		*/
-	/*  
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as 
-    published by the Free Software Foundation.
+*/
+/*  
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License, version 2, as 
+published by the Free Software Foundation.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.*/
+You should have received a copy of the GNU General Public License
+along with this program.*/
    	
 	?>
 <?php
@@ -50,14 +50,7 @@ add_action('admin_menu', 'wif_init_admin_actions');
         }else{
          update_option('req_heading','Request Form for this Post');     
         }
-        
-         if( $_POST['req_lable_name']){
          
-        update_option('req_lable_name', $_POST['req_lable_name']);  
-        
-        }else{
-         update_option('req_lable_name','Post Name');     
-        } 
   
         if( $_POST['req_Email_name']){
         update_option('req_Email_name', $_POST['req_Email_name']);  
@@ -174,20 +167,16 @@ div#main_form span.req {
          
          <legend class="form_field">
          <?php    echo "<strong>" . 'Form Feilds'. "</strong>"; ?>
-           
-              
-        
-         <p><span class="form_label">Subject:</span> &nbsp;<input type="text" name="req_lable_name" value="<?php if(get_option('req_lable_name')){ echo get_option('req_lable_name'); }else{ echo 'Your Subject';}?>"/></p>  
         <p><span class="form_label">Email:</span> &nbsp;<input type="text" name="req_Email_name" value="<?php if(get_option('req_Email_name')){ echo get_option('req_Email_name'); }else{ echo 'Your Email';}?>"/></p>  
         <p><span class="form_label">Name:</span> &nbsp;<input type="text" name="req_name" value="<?php if(get_option('req_name')){ echo get_option('req_name'); }else{ echo 'Your Name';}?>"/> </p>  
-         <p><span class="form_label">Address:</span> &nbsp;<input type="text" name="req_address" value="<?php if(get_option('req_address')){ echo get_option('req_address'); }else{ echo 'Your Address';}?>"/> </p> 
+        <p><span class="form_label">Address:</span> &nbsp;<input type="text" name="req_address" value="<?php if(get_option('req_address')){ echo get_option('req_address'); }else{ echo 'Your Address';}?>"/> </p> 
         <p><span class="form_label">Message:</span> &nbsp;<input type="text" name="req_message_name" value="<?php if(get_option('req_message_name')){ echo get_option('req_message_name'); }else{ echo 'Your Inquiry Message';}?>" /></p>  
      </legend>  
         
          
          
         <?php    echo "<strong>" . 'Error Messages Settings' . "</strong>"; ?>  
-        <p><span class="form_label">Form Successful Message:</span> <input type="text" name="suceess_message" value="<?php if(get_option('suceess_message')){ echo get_option('suceess_message'); }else{ echo 'Thank you for your Inquiry. We will contact you shortly to answer your questions.';}?>"/></p>  
+         <p><span class="form_label">Form Successful Message:</span> <input type="text" name="suceess_message" value="<?php if(get_option('suceess_message')){ echo get_option('suceess_message'); }else{ echo 'Thank you for your Inquiry. We will contact you shortly to answer your questions.';}?>"/></p>  
          <p><span class="form_label">Captcha Error:</span> <input type="text" name="captcha_error" value="<?php if(get_option('captcha_error')){ echo get_option('captcha_error'); }else{ echo 'Error: please fill the correct value.';}?>"/></p>
          <p><span class="form_label">Error Email Message:</span> <input type="text" name="email_error" value="<?php if(get_option('email_error')){ echo get_option('email_error'); }else{ echo 'Error: please enter a valid email address.';}?>"/></p>
          <p><span class="form_label">Error Name Message:</span> <input type="text" name="name_error" value="<?php if(get_option('name_error')){ echo get_option('name_error'); }else{ echo 'Error: please enter your name.';}?>"/></p>
@@ -269,12 +258,6 @@ add_action('admin_enqueue_scripts', 'wif_style_css');
 $link_request = get_permalink();
 
 $title=get_the_title();
-
-if(get_option('req_lable_name')){
-$post_name=get_option('req_lable_name');
-}else{
-   $post_name="Post Name";
-}
 
 if(get_option('req_Email_name')){
     $email_tag=get_option('req_Email_name');
@@ -378,17 +361,17 @@ $form = <<<EOT
 	{$req_message_success}
      
    <form name="my_form"  action="" method="post" enctype="multipart/form-data" style="text-align: left">
-   <div><label for="post name">{$post_name}</label><input type="text" name="product" id="product" value="{$title}" size="22" class="form_text" readonly /> </div>
+  
    <div><label for="name">{$name_tag}<span class="req">*</span></label><input type="text" name="name" id="name" value="" size="22" class="form_text" /> </div>
    <div><label for="address">{$address_tag}</label><textarea name="address" id="address" cols="100%" rows="10"></textarea></div>
    <div><label for="email">{$email_tag}<span class="req">*</span></label><input type="text" name="email" id="email" value="" size="22" class="form_text" /></div>
    <input type="hidden" name="val" id="val" value="{$cap_val}" />
    <div><label for="message">{$request_message}</label><textarea name="message" id="message" cols="100%" rows="10">type your message here...</textarea></div>
 
-   <div>Fill the Correct value<span class="req">*</span></div>
-   <div>{$rand_no_1}{$operator}{$rand_no_2}= <input type="text" name="cap" id="cap" size="4" />
+   <div><label for="captcha">Fill the Correct value<span class="req">*</span></label>
+  <div id="cap_genrate"> {$rand_no_1}{$operator}{$rand_no_2}= <input type="text" name="cap" id="cap" size="4" /></div>
    
-   <div><input name="send" type="submit" id="send" value="Request" onclick="return wif_validationform()" class="submit_button"/></div>
+  <input name="send" type="submit" id="send" value="Request" onclick="return wif_validationform()" class="submit_button"/></div>
    
    <input type="hidden" name="my_form_submitted" value="1">
    
