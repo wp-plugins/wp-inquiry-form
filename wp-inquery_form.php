@@ -35,7 +35,7 @@ add_action('admin_menu', 'wif_init_admin_actions');
   // settings update function
   function wif_admin_form_settings() {
   ?>	
-  <div id="wrapper">
+  <div id="wif_wrapper">
   <div class="main_left postbox">  
     <?php    echo "<h1>" .  'WP Inquiry Form Settings' . "</h1>"; ?>  
     

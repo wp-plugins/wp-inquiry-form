@@ -3,24 +3,24 @@
 float: left;
 padding: 0 25px 0 25px;}
 .form_field{width: 100%;}
-div#wrapper {
+div#wif_wrapper {
 
     padding: 10px;
     width: 1000px;
     margin-left: 30px;
 }
-    div#wrapper h2 {
+    div#wif_wrapper h2 {
     font-size: 30px;
     text-align: center;
 }
-    div#wrapper h4 {
+    div#wif_wrapper h4 {
     font-size: 20px;
 }
 
-div#wrapper form p {
+div#wif_wrapper form p {
     margin: 30px 0;
 }
-    div#wrapper form input[type="text"] {
+    div#wif_wrapper form input[type="text"] {
     border: 1px solid #999999;
    
     display: block;
@@ -29,11 +29,11 @@ div#wrapper form p {
     width: 100%;
 }
 
-    div#wrapper form input[type="submit"]{
+    div#wif_wrapper form input[type="submit"]{
         
         
     }
-    div#wrapper form textarea {
+    div#wif_wrapper form textarea {
     border: 1px solid #999999;
 
     display: block;
@@ -41,19 +41,19 @@ div#wrapper form p {
     width: 70%;
 }
 
-div#wrapper div#mclanka {
+div#wif_wrapper div#mclanka {
     font-size: 14px;
     font-style: italic;
     font-weight: bold;
 }
-div#wrapper div#mclanka a:link ,div#wrapper div#mclanka a:visited {
+div#wif_wrapper div#mclanka a:link ,div#wif_wrapper div#mclanka a:visited {
      color: red;
      text-decoration: none;
 }
-div#wrapper div#mclanka a:link ,div#wrapper div#mclanka a:hover {
+div#wif_wrapper div#mclanka a:link ,div#wif_wrapper div#mclanka a:hover {
     text-decoration: underline;
 }
-div#wrapper div#mclanka a:link ,div#wrapper div#mclanka a img {
+div#wif_wrapper div#mclanka a:link ,div#wif_wrapper div#mclanka a img {
     padding: 10px;
     vertical-align: middle;
 }
