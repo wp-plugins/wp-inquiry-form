@@ -25,14 +25,15 @@ along with this program.*/
 	?>
 <?php
 
-add_filter('plugin_row_meta', 'RegisterPluginLinks_inquiryform',10, 2);
-function RegisterPluginLinks_inquiryform($links, $file) {
+add_filter('plugin_row_meta', 'RegisterPluginLinks_form',10, 2);
+function RegisterPluginLinks_form($links, $file) {
 	if ( strpos( $file, 'wp-inquery_form.php' ) !== false ) {
+		$links[] = '<a href="#">FAQ</a>';
 		$links[] = '<a href="mailto:support@vivacityinfotech.com">Support</a>';
 		$links[] = '<a href="http://tinyurl.com/owxtkmt">Donate</a>';
 	}
 	return $links;
-}
+	}
 //menu show in dashborad
 function wif_init_admin_actions() {
 			add_menu_page("wp-main_form", "WP Inquiry form", 1, "wp-main_form", "wif_admin_form_settings" );
