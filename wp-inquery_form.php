@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name:WP Inquiry Form
-Plugin URI: http://www.vivacityinfotech.com
+Plugin URI: http://www.vivacityinfotech.net
 Description: Simple WP Inquiry form for your blog posts or pages.
 Author: vivacityinfotech		
-Authero URI: http://vivacityinfotech.com
+Authero URI: http://www.vivacityinfotech.net
 Version: 1.0
 Requires at least: 3.8 or later
 		
@@ -25,6 +25,14 @@ along with this program.*/
 	?>
 <?php
 
+add_filter('plugin_row_meta', 'RegisterPluginLinks_xmlsite',10, 2);
+function RegisterPluginLinks_xmlsite($links, $file) {
+	if ( strpos( $file, 'wp-xml-sitemap.php' ) !== false ) {
+		$links[] = '<a href="mailto:support@vivacityinfotech.com">Support</a>';
+		$links[] = '<a href="http://tinyurl.com/owxtkmt">Donate</a>';
+	}
+	return $links;
+}
 //menu show in dashborad
 function wif_init_admin_actions() {
 			add_menu_page("wp-main_form", "WP Inquiry form", 1, "wp-main_form", "wif_admin_form_settings" );
