@@ -27,7 +27,7 @@ along with this program.*/
 
 add_filter('plugin_row_meta', 'RegisterPluginLinks_inquiryform',10, 2);
 function RegisterPluginLinks_inquiryform($links, $file) {
-	if ( strpos( $file, 'wp-xml-sitemap.php' ) !== false ) {
+	if ( strpos( $file, 'wp-inquery_form.php' ) !== false ) {
 		$links[] = '<a href="mailto:support@vivacityinfotech.com">Support</a>';
 		$links[] = '<a href="http://tinyurl.com/owxtkmt">Donate</a>';
 	}
