@@ -5,7 +5,7 @@ Plugin URI: http://www.vivacityinfotech.net
 Description: Simple WP Inquiry form for your blog posts or pages.
 Author: vivacityinfotech		
 Authero URI: http://www.vivacityinfotech.net
-Version: 1.0
+Version: 1.1
 Requires at least: 3.8 or later
 		
 */
@@ -369,7 +369,7 @@ $form = <<<EOT
 
 	{$req_message_success}
      
-   <form name="my_form"  action="" method="post" enctype="multipart/form-data" style="text-align: left">
+   <form id="myform"  name="my_form"  action="" method="post" enctype="multipart/form-data" style="text-align: left">
   
    <div><label for="name">{$name_tag}<span class="req">*</span></label><input type="text" name="name" id="name" value="" size="22" class="form_text" /> </div>
    <div><label for="address">{$address_tag}</label><textarea name="address" id="address" cols="100%" rows="10"></textarea></div>
@@ -490,27 +490,30 @@ function wif_request_script() { ?>
 }
 
 function wif_validationform(){
+	
 	var err1,err2;
     var email=document.my_form.email.value;
     var name=document.my_form.name.value;
+    
     var loadDiv=document.getElementById('send-msg');
 
 
+
     if ((name.length==0) || (name==null)) {
-		$('div#main_form input#name').css('background','orange');
-		 err1=1;
+		 jQuery('#name').css('background','orange');
+		err1=1;
 	 }else{
-             err1=0;
-             $('div#main_form input#name').css('background','white');
+            err1=0;
+             jQuery('#name').css('background','white');
          }
 
 
 	if(!wif_validateMail(email)){
-		$('div#main_form input#email').css('background','orange');
+		jQuery('#email').css('background','orange');
 	          err2=1;
        }
            else{ err2=0;
-           $('div#main_form input#email').css('background','white');
+           jQuery('#email').css('background','white');
        }
 
 
@@ -525,6 +528,7 @@ function wif_validationform(){
              return false;
 
          }
+
 }
 </script>
 
@@ -599,3 +603,5 @@ default:
 return '+';
 }
 }              
+?>
+

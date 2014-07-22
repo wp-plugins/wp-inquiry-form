@@ -57,6 +57,8 @@ Installation consists of following steps:
 
 == Changelog ==
 
+= 1.1 =
+* Resolved jQuery Validation Bugs
+
 = 1.0 =
 * Initial release
-
