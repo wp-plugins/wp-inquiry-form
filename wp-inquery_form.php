@@ -1,5 +1,4 @@
-<?php
-/*
+<?php /*
 Plugin Name:WP Inquiry Form
 Plugin URI: http://www.vivacityinfotech.net
 Description: Simple WP Inquiry form for your blog posts or pages.
@@ -21,9 +20,6 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.*/
-   	
-	?>
-<?php
 ob_start();
 add_filter('plugin_row_meta', 'RegisterPluginLinks_form',10, 2);
 function RegisterPluginLinks_form($links, $file) {
@@ -46,11 +42,8 @@ add_action('admin_menu', 'wif_init_admin_actions');
   ?>	
   <div id="wif_wrapper">
   <div class="main_left postbox">  
-    <?php    echo "<h1>" .  'WP Inquiry Form Settings' . "</h1>"; ?>  
-    
-    <?php
- 
-      if($_POST['hidden_value'] == 'Y') {  
+<?php  echo "<h1>" .  'WP Inquiry Form Settings' . "</h1>";   
+ if($_POST['hidden_value'] == 'Y') {  
         //Form data sent  
         if( $_POST['req_heading']){
        
@@ -163,10 +156,7 @@ div#main_form span.req {
 
 .form_label{display: inline-block; width: 60px;}');     
         } 
-
-        ?>
-        
-        <?php }?>
+ }?>
  <!-- Plug in Settings form -->
  
     <form name="my_form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>"> 
@@ -250,9 +240,8 @@ If You Want more functionality or some modifications, just drop us a line what y
 			</div>
 			</div>   
 </div> 
- <?php 	
-  	
-  	}                        
+<?php 	
+}                        
 
 //style included    
  function wif_style_css() {
@@ -603,6 +592,3 @@ default:
 return '+';
 }
 }              
-?>
-
-
