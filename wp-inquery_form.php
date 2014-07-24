@@ -24,7 +24,7 @@ along with this program.*/
    	
 	?>
 <?php
-
+ob_start();
 add_filter('plugin_row_meta', 'RegisterPluginLinks_form',10, 2);
 function RegisterPluginLinks_form($links, $file) {
 	if ( strpos( $file, 'wp-inquery_form.php' ) !== false ) {
@@ -604,4 +604,5 @@ return '+';
 }
 }              
 ?>
+
 
