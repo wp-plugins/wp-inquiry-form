@@ -5,7 +5,7 @@ Description: Simple WP Inquiry form for your blog posts or pages.
 Author: vivacityinfotech		
 Authero URI: http://www.vivacityinfotech.net
 Version: 1.1
-Requires at least: 3.8 or later
+Requires at least: 4.0 or later
 		
 */
 /*  
