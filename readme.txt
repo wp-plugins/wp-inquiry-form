@@ -3,7 +3,7 @@ Contributors: vivacityinfotech.jaipur
 Donate link: http://tinyurl.com/owxtkmt
 Tags:  wp inquiry Form, inquiry Form, inquiry Form wordpress, form, contact form, contact, communication, communication form.
 Requires at least: 3.0
-Tested up to: 4.0
+Tested up to: 4.2
 License: GPLv2 or later
 
 An easy way to add WP Inquiry Form in your pages and post with shortcode[request_message].

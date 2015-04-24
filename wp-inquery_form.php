@@ -4,22 +4,27 @@ Plugin URI: http://www.vivacityinfotech.net
 Description: Simple WP Inquiry form for your blog posts or pages.
 Author: vivacityinfotech		
 Authero URI: http://www.vivacityinfotech.net
+* Author Email: support@vivacityinfotech.net
 Version: 1.1
 Requires at least: 4.0 or later
 		
 */
 /*  
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License, version 2, as 
-published by the Free Software Foundation.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+Copyright 2014  Vivacity InfoTech Pvt. Ltd.  (email : support@vivacityinfotech.net)
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License, version 2, as 
+    published by the Free Software Foundation.
 
-You should have received a copy of the GNU General Public License
-along with this program.*/
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+	 You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 ob_start();
 add_filter('plugin_row_meta', 'RegisterPluginLinks_form',10, 2);
 function RegisterPluginLinks_form($links, $file) {
