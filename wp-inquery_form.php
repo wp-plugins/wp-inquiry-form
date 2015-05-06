@@ -30,7 +30,7 @@ add_filter('plugin_row_meta', 'RegisterPluginLinks_form',10, 2);
 function RegisterPluginLinks_form($links, $file) {
 	if ( strpos( $file, 'wp-inquery_form.php' ) !== false ) {
 		$links[] = '<a href="#">FAQ</a>';
-		$links[] = '<a href="mailto:support@vivacityinfotech.com">Support</a>';
+		$links[] = '<a href="mailto:support@vivacityinfotech.net">Support</a>';
 		$links[] = '<a href="http://bit.ly/1icl56K">Donate</a>';
 	}
 	return $links;

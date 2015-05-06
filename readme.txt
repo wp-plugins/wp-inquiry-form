@@ -3,10 +3,10 @@ Contributors: vivacityinfotech.jaipur
 Donate link: http://tinyurl.com/owxtkmt
 Tags:  wp inquiry Form, inquiry Form, inquiry Form wordpress, form, contact form, contact, communication, communication form.
 Requires at least: 3.0
-Tested up to: 4.2
+Tested up to: 4.2.1
 License: GPLv2 or later
 
-An easy way to add WP Inquiry Form in your pages and post with shortcode[request_message].
+An easy way to add WP Inquiry Form in your pages and post with shortcode [request_message].
 
 == Description ==
 A page on a Web site that allows users to communicate with the site owner. The page has fields for filling in name, email and type of message. 
@@ -23,7 +23,7 @@ An enquiry form is a form that is filled out by an individual who has an enquiry
     -Tons of configuration options.
     -Fully responsive - will adapt to any device.
     -Browser support: Firefox, Chrome, Safari, Opera , IE7+
-    
+    -Shotcode available to use in any page or post.
     
 
 = Rate Us / Feedback =
@@ -48,7 +48,7 @@ Installation consists of following steps:
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Place the "WP Inquiry Form"  in your dashboard menu a area.
 
-
+Please use this shortcode [request_message] to add contact form to any of your page or post.
 
 == Screenshots ==
 1. WP Inquiry Form plugin appears after activation in dashboard menu section  .
