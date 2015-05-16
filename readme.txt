@@ -17,7 +17,7 @@ An enquiry form is a form that is filled out by an individual who has an enquiry
 
 
 
-= Features =
+= Features ==
 
     -Easy to install.
     -Tons of configuration options.
