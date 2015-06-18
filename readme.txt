@@ -15,8 +15,6 @@ An enquiry form is a form that is filled out by an individual who has an enquiry
  Most organizations have these forms to ease the process of answering client enquiries.
 
 
-
-
 = Features =
 
     -Easy to install.
