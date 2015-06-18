@@ -4,33 +4,28 @@ Plugin URI: http://www.vivacityinfotech.net
 Description: Simple WP Inquiry form for your blog posts or pages.
 Author: vivacityinfotech		
 Authero URI: http://www.vivacityinfotech.net
-* Author Email: support@vivacityinfotech.net
 Version: 1.1
 Requires at least: 4.0 or later
 		
 */
 /*  
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License, version 2, as 
+published by the Free Software Foundation.
 
-Copyright 2014  Vivacity InfoTech Pvt. Ltd.  (email : support@vivacityinfotech.net)
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as 
-    published by the Free Software Foundation.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-	 You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+You should have received a copy of the GNU General Public License
+along with this program.*/
 ob_start();
 add_filter('plugin_row_meta', 'RegisterPluginLinks_form',10, 2);
 function RegisterPluginLinks_form($links, $file) {
 	if ( strpos( $file, 'wp-inquery_form.php' ) !== false ) {
 		$links[] = '<a href="#">FAQ</a>';
-		$links[] = '<a href="mailto:support@vivacityinfotech.net">Support</a>';
+		$links[] = '<a href="mailto:support@vivacityinfotech.com">Support</a>';
 		$links[] = '<a href="http://bit.ly/1icl56K">Donate</a>';
 	}
 	return $links;
@@ -200,50 +195,49 @@ div#main_form span.req {
   js.src = "//connect.facebook.net/en_IN/all.js#xfbml=1&appId=533043140136429";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script> 
-    <div class="postbox right ads_bar">
-<div class="metabox-holder">
-	<div class="ui-sortable meta-box-sortables">
-		<div class="postbox">
-			<div class="handlediv"><span class="screen-reader-text">Click to toggle</span></div>
-			<h3 class='hndle'><span><strong>WP Twitter Autopost Support</strong></span></h3>			
-			<div class="inside resources">
-			
-			<p>
-			<a href="https://twitter.com/intent/follow?screen_name=vivacityIT" class="twitter-follow-button" data-size="small" >Follow @vivacityIT</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			</p>
-			
-			<a href="#get-support">Get Support</a>
-			
-			<p><a href="http://tinyurl.com/owxtkmt">Make a donation today!</a><br />Each donation matters - donate today!</p>
-			<div class='donations'>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="donation_viva">
-				<div>
-				<input type="hidden" name="cmd" value="_s-xclick" />
-				<input type="hidden" name="hosted_button_id" value="8490399" />
-				<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" name="submit" alt="Donate" />
-				<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-				</div>
-			</form>
-			<div class="fb-like" data-href="https://www.facebook.com/vivacityinfotech" data-width="50" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false" style="overflow:hidden;"></div>
-			</div>
-		
-			</div>
-		</div>
-	</div>
-	
+    
+ <div class="right">
+	<center>
+<div class="bottom">
+		    <h3 id="download-comments-wvpd" class="title"><?php _e( 'Download Free Plugins', 'wvpd' ); ?></h3>
+		     
+     <div id="downloadtbl-comments-wvpd" class="togglediv">  
+	<h3 class="company">
+<p> Vivacity InfoTech Pvt. Ltd. is an ISO 9001:2008 Certified Company is a Global IT Services company with expertise in outsourced product development and custom software development with focusing on software development, IT consulting, customized development.We have 200+ satisfied clients worldwide.</p>	
+<?php _e( 'Our Top 5 Latest Plugins', 'wvpd' ); ?>:
+</h3>
+<ul class="">
+<li><a target="_blank" href="https://wordpress.org/plugins/woocommerce-social-buttons/">Woocommerce Social Buttons</a></li>
+<li><a target="_blank" href="https://wordpress.org/plugins/vi-random-posts-widget/">Vi Random Post Widget</a></li>
+<li><a target="_blank" href="http://wordpress.org/plugins/wp-infinite-scroll-posts/">WP EasyScroll Posts</a></li>
+<li><a target="_blank" href="https://wordpress.org/plugins/buddypress-social-icons/">BuddyPress Social Icons</a></li>
+<li><a target="_blank" href="http://wordpress.org/plugins/wp-fb-share-like-button/">WP Facebook Like Button</a></li>
+</ul>
+  </div> 
+</div>		
+<div class="bottom">
+		    <h3 id="donatehere-comments-wvpd" class="title"><?php _e( 'Donate Here', 'wvpd' ); ?></h3>
+     <div id="donateheretbl-comments-wvpd" class="togglediv">  
+     <p><?php _e( 'If you want to donate , please click on below image.', 'wvpd' ); ?></p>
+	<a href="http://bit.ly/1icl56K" target="_blank"><img class="donate" src="<?php echo plugins_url( 'images/paypal.gif' , __FILE__ ); ?>" width="150" height="50" title="<?php _e( 'Donate Here', 'wvpd' ); ?>"></a>		
+  </div> 
+</div>	
+<div class="bottom">
+		    <h3 id="donatehere-comments-wvpd" class="title"><?php _e( 'Woocommerce Frontend Plugin', 'wvpd' ); ?></h3>
+     <div id="donateheretbl-comments-wvpd" class="togglediv">  
+     <p><?php _e( 'If you want to purchase , please click on below image.', 'wvpd' ); ?></p>
+	<a href="http://bit.ly/1HZGRBg" target="_blank"><img class="donate" src="<?php echo plugins_url( 'images/woo_frontend_banner.png' , __FILE__ ); ?>" width="336" height="280" title="<?php _e( 'Donate Here', 'wvpd' ); ?>"></a>		
+  </div> 
 </div>
+<div class="bottom">
+		    <h3 id="donatehere-comments-wvpd" class="title"><?php _e( 'Blue Frog Template', 'wvpd' ); ?></h3>
+     <div id="donateheretbl-comments-wvpd" class="togglediv">  
+     <p><?php _e( 'If you want to purchase , please click on below image.', 'wvpd' ); ?></p>
+	<a href="http://bit.ly/1Gwp4Vv" target="_blank"><img class="donate" src="<?php echo plugins_url( 'images/blue_frog_banner.png' , __FILE__ ); ?>" width="336" height="280" title="<?php _e( 'Donate Here', 'wvpd' ); ?>"></a>		
+  </div> 
 </div>
-    	<div class="postbox right ads_bar">
-			<h3 class="hndle" style="padding:10px;"><span>Follow Us</span></h3>
-			<div class="inside">
-			Please take the time to let us and others know about your experiences by leaving a review, so that we can improve the plugin for you and other users.
-<br>
-<h4>Want More?</h4>
-If You Want more functionality or some modifications, just drop us a line what you want and We will try to add or modify the plugin functions.
-			
-			</div>
-			</div>   
+	</center>
+</div>   
 </div> 
 <?php 	
 }                        
