@@ -4,7 +4,7 @@ Plugin URI: http://www.vivacityinfotech.net
 Description: Simple WP Inquiry form for your blog posts or pages.
 Author: vivacityinfotech		
 Authero URI: http://www.vivacityinfotech.net
-Version: 1.1
+Version: 1.2
 Requires at least: 4.0 or later
 		
 */
@@ -20,7 +20,10 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.*/
+
 ob_start();
+error_reporting(0);
+
 add_filter('plugin_row_meta', 'RegisterPluginLinks_form',10, 2);
 function RegisterPluginLinks_form($links, $file) {
 	if ( strpos( $file, 'wp-inquery_form.php' ) !== false ) {
@@ -32,7 +35,7 @@ function RegisterPluginLinks_form($links, $file) {
 	}
 //menu show in dashborad
 function wif_init_admin_actions() {
-			add_menu_page("wp-main_form", "WP Inquiry form", 1, "wp-main_form", "wif_admin_form_settings" );
+			add_menu_page("wp-main_form", "WP Inquiry form",'manage_options', "wp-main_form", "wif_admin_form_settings",'dashicons-admin-generic' );
 		}
 
 add_action('admin_menu', 'wif_init_admin_actions');
@@ -45,7 +48,20 @@ add_action('admin_menu', 'wif_init_admin_actions');
 <?php  echo "<h1>" .  'WP Inquiry Form Settings' . "</h1>";   
  if($_POST['hidden_value'] == 'Y') {  
         //Form data sent  
-        if( $_POST['req_heading']){
+        if( $_POST['show_from']){
+       
+        update_option('show_from', $_POST['show_from']);
+
+        }else{
+         update_option('show_from','no');     
+        }
+        	if($_REQUEST['select_custom_post_type'] !='')
+	{
+		 	$getva = implode(',',$_REQUEST['select_custom_post_type']);
+ 		   update_option('select_custom_post_type', $getva);
+		 }
+	 
+           if( $_POST['req_heading']){
        
         update_option('req_heading', $_POST['req_heading']);
 
@@ -85,7 +101,7 @@ add_action('admin_menu', 'wif_init_admin_actions');
         update_option('to_email', $_POST['to_email']);  
         
         }else{
-         update_option('to_email',get_settings('admin_email'));     
+         update_option('to_email',get_option('admin_email'));     
         } 
         
           if( $_POST['suceess_message']){
@@ -158,11 +174,59 @@ div#main_form span.req {
         } 
  }?>
  <!-- Plug in Settings form -->
- 
+
+
     <form name="my_form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>"> 
-          
+           <p><span class="form_label">Show Form in Content:</span>
+           <?php   $show_from = get_option('show_from');?>
+            <input type="radio" <?php if( $show_from =='yes'){?> checked=checked <?php } ?> name="show_from" id="show_from"  value="yes">Yes 
+           <input type="radio" <?php if( $show_from =='no'){?> checked=checked <?php } ?> name="show_from" id="show_from" value="no">No
+            </p>
+             <p><span class="form_label">Select Post Type:</span> 
+<?php
+$args = array(
+   'public'   => true,
+   '_builtin' => false
+);
+$output = 'names'; // names or objects, note names is the default
+$operator = 'and'; // 'and' or 'or'
+$post_types = get_post_types( $args, $output, $operator ); 
+ $k=0;
+    $getdata = get_option('select_custom_post_type');
+    $exdata =explode(',', $getdata );
+   $total =count($exdata);
+   ?>
+  <input type="checkbox" value="post" <?php    for($a=0;$a<=$total;$a++)
+  {
+  	 if($exdata[$a]== post){  ?> 
+  	 checked="checked" 
+  	 <?php }} ?>
+  	 name="select_custom_post_type[]"><?php  _e( "post", "" );?>
+  <input type="checkbox" value="page" <?php    for($a=0;$a<=$total;$a++)
+  {
+  	 if($exdata[$a]== page){  ?> 
+  	 checked="checked" 
+  	 <?php }} ?> name="select_custom_post_type[]"><?php  _e( "page", "" );?>
+<?php foreach ( $post_types as $post_type ) {
+$con='';
+$con.='<input type="checkbox"';
+ 
+   for($a=0;$a<=$total;$a++)
+  {
+  	 if($exdata[$a]== $post_type){  
+ 	 $con.='checked="checked"';
+ 	 
+ 	   } }
+ 	 $con.=' name="select_custom_post_type[]" value="'.$post_type.'" />'.$post_type.'';
+  echo $con;  
+$k++;
+}
+
+?>  
+
+            </p>     
        <?php    echo "<strong>" .  'Email To Settings' . "</strong>"; ?>  
-        <p><input type="text" name="to_email" value="<?php if(get_option('to_email')){ echo get_option('to_email'); }else{ echo get_settings('admin_email');}?>" /></p>    
+        <p><input type="text" name="to_email" value="<?php if(get_option('to_email')){ echo get_option('to_email'); }else{ echo get_option('admin_email');}?>" /></p>    
          
          <legend class="form_field">
          <?php    echo "<strong>" . 'Form Feilds'. "</strong>"; ?>
@@ -187,6 +251,7 @@ div#main_form span.req {
         
          
     </form>  
+  
     </div>
     <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -246,12 +311,20 @@ div#main_form span.req {
  function wif_style_css() {
  	
  	 wp_enqueue_style( 'main_css',plugins_url( 'css/stylesheet.css' , __FILE__ ) );
- 	
+	wp_enqueue_script( 'slider_cript.min',plugins_url( 'js/script.min.js' , __FILE__ ) , array( 'jquery' ), 0.1, true );
+		wp_enqueue_script( 'script',plugins_url( 'js/script.js' , __FILE__ ) , array( 'jquery' ), 0.1, true );
+		wp_enqueue_script( 'admin',plugins_url( 'js/admin.js' , __FILE__ ) , array( 'jquery' ), 0.1, true );
+
  	}    
 add_action('wp_enqueue_scripts', 'wif_style_css');  
 add_action('admin_enqueue_scripts', 'wif_style_css');         
-                
+   
+     
  function wif_get_requestform() {
+ 	
+ 		
+ 	
+ 	
 $link_request = get_permalink();
 
 $title=get_the_title();
@@ -290,13 +363,154 @@ if(get_option('stylesheet_request')){
 }else{
     $style_css='div#main_form{
 padding:10px;
-
+ background-color: #FFFFFF;
 }
 div#main_form label {
     display: block;
     font-size: 13px;
     font-weight: bold;
     margin: 5px 10px;
+}
+div#main_form input.form_text {
+    display: block;
+    height: 35px;
+    margin: 0 10px 0px;
+    width: 400px;
+background:white;
+}
+div#main_form textarea {
+    height: 140px;
+    margin-left: 10px;
+    width: 400px;
+background:white;
+}
+div#main_form input.submit_button {
+    display: block;
+    height: 50px;
+    margin: 10px;
+    width: 200px;
+}
+
+div#main_form span.req {
+    color: #268da3;
+    font-size: 20px;
+}';
+}
+
+
+if(@$_GET['suc']==1){
+    if(get_option('suceess_message')){ $req_message_success= '<p style="color: green; font-weight:bold">'.get_option('suceess_message').'</p>'; }else{ $req_message_success= $suceess_message;};
+  
+}
+else{
+    $req_message_success='';
+}
+
+$rand_no_1=$_SESSION['no1'];
+$rand_no_2=$_SESSION['no2'];
+$oparator_no=$_SESSION['operator_no'];
+$operator=$_SESSION['operator'];
+
+if($rand_no_2>$rand_no_1){
+    $temp=$rand_no_1;
+    $rand_no_1=$rand_no_2;
+    $rand_no_2=$temp;
+}
+ $cap_val=str_pad($rand_no_1,2,'0',STR_PAD_LEFT).str_pad($rand_no_2,2,'0',STR_PAD_LEFT).$oparator_no;
+
+$form = <<<EOT
+
+<style type="text/css">
+ {$style_css}
+
+</style>
+
+<div id="main_form">
+<div id="send-msg"></div>
+
+	{$req_message_success}
+     
+   <form id="myform"  name="my_form"  action="" method="post" enctype="multipart/form-data" style="text-align: left">
+  
+   <div><label for="name">{$name_tag}<span class="req">*</span></label><input type="text" name="name" id="viva_name" value="" size="22" class="form_text" /> </div>
+   <div><label for="address">{$address_tag}</label><textarea name="address" id="viva_address" cols="100%" rows="10"></textarea></div>
+   <div><label for="email">{$email_tag}<span class="req">*</span></label><input type="text" name="email" id="viva_email" value="" size="22" class="form_text" /></div>
+   <input type="hidden" name="val" id="val" value="{$cap_val}" />
+   <div><label for="message">{$request_message}</label><textarea name="message" id="viva_message" cols="100%" rows="10">type your message here...</textarea></div>
+
+   <div><label for="captcha">Fill the Correct value<span class="req">*</span></label>
+  <div id="cap_genrate"> {$rand_no_1}{$operator}{$rand_no_2}= <input type="text" name="cap" id="cap" size="4" /></div>
+   
+  <input name="send" type="submit" id="send" value="Request" onclick="return wif_validationform()" class="submit_button"/></div>
+   
+   <input type="hidden" name="my_form_submitted" value="1">
+   
+   </form>
+   
+</div>
+
+EOT;
+return  $form;
+}
+ 
+  function filter_requestform() {
+ 	$custom = get_option('select_custom_post_type');
+				$exdata =explode(',', $custom );	
+		  $totallenhth = count($exdata);
+ 
+for($i=0;$i <= $totallenhth;$i++)
+ 		{ 
+ 	 
+ 			if(get_post_type($post->ID)  ==  $exdata[$i] )  {	
+ 		
+ 	
+ 	
+$link_request = get_permalink();
+
+$title=get_the_title();
+
+if(get_option('req_Email_name')){
+    $email_tag=get_option('req_Email_name');
+}else{
+    $email_tag='Your Email';
+}
+
+if(get_option('req_name')){
+    $name_tag=get_option('req_name');
+}else{
+    $name_tag='Your Name';
+}
+
+if(get_option('req_address')){
+    $address_tag=get_option('req_address');
+}else{
+    $address_tag='Your Address';
+}
+if(get_option('req_message_name')){
+    $request_message=get_option('req_message_name');
+}else{
+    $request_message='Inquiry Message';
+}
+
+if(get_option('suceess_message')){
+    $suceess_message=get_option('suceess_message');
+}else{
+    $suceess_message='Thank you for your Inquiry. We will contact you shortly to answer your questions.';
+}
+
+if(get_option('stylesheet_request')){
+    $style_css=get_option('stylesheet_request');
+}else{
+    $style_css='div#main_form{
+padding:10px;
+ background-color: #FFFFFF;
+}
+div#main_form label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 5px 10px;
+
 }
 div#main_form input.form_text {
     display: block;
@@ -344,26 +558,27 @@ if($rand_no_2>$rand_no_1){
     $rand_no_2=$temp;
 }
  $cap_val=str_pad($rand_no_1,2,'0',STR_PAD_LEFT).str_pad($rand_no_2,2,'0',STR_PAD_LEFT).$oparator_no;
-
-$form = <<<EOT
-
+  $form = <<<EOT
+<br>
 <style type="text/css">
  {$style_css}
 
 </style>
 
-<div id="main_form">
+<div id="main_form" style="display:none">
+<div class='button b-close'><a href="javascript:void(0)">x <a/></div>
+<div class="fomr_title">Request  For Contact Form :</div>
 <div id="send-msg"></div>
 
 	{$req_message_success}
-     
-   <form id="myform"  name="my_form"  action="" method="post" enctype="multipart/form-data" style="text-align: left">
+ 
+   <form id="myform" id="popupdiv" name="my_form"  action="" method="post" enctype="multipart/form-data" style="text-align: left">
   
-   <div><label for="name">{$name_tag}<span class="req">*</span></label><input type="text" name="name" id="name" value="" size="22" class="form_text" /> </div>
-   <div><label for="address">{$address_tag}</label><textarea name="address" id="address" cols="100%" rows="10"></textarea></div>
-   <div><label for="email">{$email_tag}<span class="req">*</span></label><input type="text" name="email" id="email" value="" size="22" class="form_text" /></div>
+   <div><label for="name">{$name_tag}<span class="req">*</span></label><input type="text" name="name" id="viva_name" value="" size="22" class="form_text" /> </div>
+   <div><label for="address">{$address_tag}</label><textarea name="address" id="viva_address" cols="100%" rows="10"></textarea></div>
+   <div><label for="email">{$email_tag}<span class="req">*</span></label><input type="text" name="email" id="viva_email" value="" size="22" class="form_text" /></div>
    <input type="hidden" name="val" id="val" value="{$cap_val}" />
-   <div><label for="message">{$request_message}</label><textarea name="message" id="message" cols="100%" rows="10">type your message here...</textarea></div>
+   <div><label for="message">{$request_message}</label><textarea name="message" id="viva_message" cols="100%" rows="10">type your message here...</textarea></div>
 
    <div><label for="captcha">Fill the Correct value<span class="req">*</span></label>
   <div id="cap_genrate"> {$rand_no_1}{$operator}{$rand_no_2}= <input type="text" name="cap" id="cap" size="4" /></div>
@@ -373,27 +588,37 @@ $form = <<<EOT
    <input type="hidden" name="my_form_submitted" value="1">
    
    </form>
-   
+  
 </div>
-
+<div class="form_popup"><a href="javascript:void(0)" id="pop" class="popup_but">Request for contact</a></div>
 EOT;
-
-return $form;
-
+$content =get_the_content();
+return  $content.$form;
 }
+else {
+			 
+			  $newdata = get_the_content();
+			}
+}
+}
+ 
 //shortcode for form
 add_shortcode('request_message', 'wif_get_requestform');
-
-
+ $show_from = get_option('show_from');
+ if( $show_from=='yes')
+ {
+ 	
+add_filter( 'the_content', 'filter_requestform',10);
+}
+ 
 function wif_request_procced() {
-
-session_start();
+ 
 
 
 if(get_option('to_email')){
     $email_to=get_option('to_email');
 }else{
-    $email_to=get_settings('admin_email');
+    $email_to=get_option('admin_email');
 }
 
 if(get_option('captcha_error')){
@@ -480,28 +705,28 @@ function wif_request_script() { ?>
 function wif_validationform(){
 	
 	var err1,err2;
-    var email=document.my_form.email.value;
-    var name=document.my_form.name.value;
+    var email=document.my_form.viva_email.value;
+    var name=document.my_form.viva_name.value;
     
     var loadDiv=document.getElementById('send-msg');
 
 
 
     if ((name.length==0) || (name==null)) {
-		 jQuery('#name').css('background','orange');
+		 jQuery('#viva_name').css('background','orange');
 		err1=1;
 	 }else{
             err1=0;
-             jQuery('#name').css('background','white');
+             jQuery('#viva_name').css('background','white');
          }
 
 
 	if(!wif_validateMail(email)){
-		jQuery('#email').css('background','orange');
+		jQuery('#viva_email').css('background','orange');
 	          err2=1;
        }
            else{ err2=0;
-           jQuery('#email').css('background','white');
+           jQuery('#viva_email').css('background','white');
        }
 
 
@@ -590,4 +815,5 @@ case 2:
 default:
 return '+';
 }
-}              
+}
+          
